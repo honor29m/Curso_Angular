@@ -1,4 +1,4 @@
-interface Producto {
+export interface Producto {
     desc: string;
     precio: number;
 }
@@ -13,7 +13,7 @@ const tablet: Producto = {
     precio: 200
 }
 
-function calcularIVA(prod: Producto[]):[number, number] {
+export function calcularIVA(prod: Producto[]):[number, number] {
 
     let total = 0;
 
