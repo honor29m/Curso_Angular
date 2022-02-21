@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Country } from '../../interfaces/pais.interface';
 import { PaisService } from '../../services/pais.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class PorPaisComponent implements OnInit {
 
   public termino: string = '';
   public hayError: boolean = false;
+  public paises: Country[] = [];
 
   constructor(
     private paisService: PaisService
@@ -26,6 +28,7 @@ export class PorPaisComponent implements OnInit {
     this.paisService.burcarPais( this.termino ).subscribe(
       response => {
         console.log( response );
+        this.paises = response;
       },
       error => {
         console.log(error);
