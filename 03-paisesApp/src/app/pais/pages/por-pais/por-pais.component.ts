@@ -9,7 +9,8 @@ import { PaisService } from '../../services/pais.service';
 })
 export class PorPaisComponent implements OnInit {
 
-  termino: string = '';
+  public termino: string = '';
+  public hayError: boolean = false;
 
   constructor(
     private paisService: PaisService
@@ -19,11 +20,16 @@ export class PorPaisComponent implements OnInit {
   }
 
   buscar() {
+    this.hayError = false;
     console.log(this.termino);
 
     this.paisService.burcarPais( this.termino ).subscribe(
       response => {
         console.log( response );
+      },
+      error => {
+        console.log(error);
+        this.hayError = true;
       }
     )
   }
